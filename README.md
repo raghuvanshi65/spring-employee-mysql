@@ -6,6 +6,8 @@
 3. jenkins - docker image, refer-[Installation jenkins](https://www.knowledgehut.com/blog/devops/install-jenkins-ubuntu)
 4. mysql - docker image, ``` docker pull mysql```
 
+
+
 **Run the below command to start the mysql container and build the spring-app image and run it and link with mysql docker container**
 
 ```
@@ -20,6 +22,7 @@ docker build . -t spring-employee-mysql
 ```
 docker run -p 8086:8086 --name spring-employee-mysql --link mysql-standalone:mysql -d spring-employee-mysql
 ```
+
 
 
 ### Setting up the jenkins pipeline to automate the deployment - (Using jenkins on localhost) - unstable due to changing ip address
@@ -38,10 +41,18 @@ docker build <relative_path>/complete/ -t spring-employee-mysql
 docker run -p 8086:8086 --name spring-employee-mysql --link mysql-standalone:mysql -d spring-employee-mysql
 ```
 
+
+
 **The above pipeline does the following**
 
-1.Pulls the code from git, when pushed to master.
-2.Runs Build script to generate new .jar file with **embedded tomcat server**
-3.Rebuild Docker Image and spin us the container again.
+1. Pulls the code from git, when pushed to master.
+2. Runs Build script to generate new .jar file with **embedded tomcat server**
+3. Rebuild Docker Image and spin us the container again.
 
 
+
+![Jenkins Dashboard Pipeline Job](https://raw.githubusercontent.com/raghuvanshi65/spring-employee-mysql/master/images/Screenshot%20from%202022-04-18%2000-46-30.png)
+
+![Jenkins Build for Pipeline Job](https://raw.githubusercontent.com/raghuvanshi65/spring-employee-mysql/master/images/Screenshot%20from%202022-04-18%2000-46-39.png)
+
+![Github Webhook Connection](https://raw.githubusercontent.com/raghuvanshi65/spring-employee-mysql/master/images/Screenshot%20from%202022-04-18%2000-47-04.png)
